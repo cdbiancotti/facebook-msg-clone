@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [input, setInput] = useState('');
+  const [messages, setMessages] = useState(['']);
+
+  console.log(input);
+
+  const sendMsg = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setMessages([...messages, input]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h1>Hi Bra!</h1>
+      {/* input field */}
+      <input value={input} onChange={(e) => setInput(e.target.value)} />
+      {/* button */}
+      <button onClick={sendMsg}>Send</button>
+      {/* messages themself */}
     </div>
   );
 }
