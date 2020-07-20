@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+form {
+  border-top: 1px dashed lightgrey;
+  background-color: white;
+  height: 10vh;
+  position: fixed;
+  bottom: 0;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
