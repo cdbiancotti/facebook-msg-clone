@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
+import { Button, FormControl, InputLabel, Input, IconButtonClassKey } from '@material-ui/core';
 import './App.css';
 import Message from './Message';
 import db from './firebase';
 import firebase from 'firebase';
+import FlipMove from 'react-flip-move';
+import SendIcon from '@material-ui/icons/Send';
+import { IconButton } from '@material-ui/core';
 
 export type MsgObject = {
+  id: string;
   username: string;
   text: string;
   timestamp: Date;
@@ -23,6 +27,7 @@ function App() {
         setMessages(
           snapshot.docs.map((doc) => {
             const msgObject: MsgObject = {
+              id: doc.id,
               username: doc.data().username,
               text: doc.data().text,
               timestamp: doc.data().timestamp,
@@ -56,25 +61,23 @@ function App() {
   return (
     <div className='App'>
       <h1>Hi Bra!</h1>
-      {/* messages themself */}
-      <div className='message-box'>
-        {messages.map((message) => (
-          <>
-            <Message username={username} message={message} />
-          </>
-        ))}
-      </div>
-      <form>
+      <form className='app__form'>
         {/* input field */}
         <FormControl>
           <InputLabel>Write a message...</InputLabel>
           <Input value={input} onChange={(e) => setInput(e.target.value)} />
+          <IconButton className='app__button' type='submit' disabled={!input} color='primary' onClick={sendMsg}>
+            <SendIcon />
+          </IconButton>
         </FormControl>
         {/* button */}
-        <Button type='submit' disabled={!input} variant='contained' color='primary' onClick={sendMsg}>
-          Send
-        </Button>
       </form>
+      {/* messages themself */}
+      <FlipMove>
+        {messages.map((message) => (
+          <Message key={message.id} username={username} message={message} />
+        ))}
+      </FlipMove>
     </div>
   );
 }
