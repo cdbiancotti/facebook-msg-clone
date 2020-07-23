@@ -17,7 +17,8 @@ const Message: React.FC<Props> = forwardRef(({ message, username }, ref: any) =>
       <Card className={`message-card ${isUser && 'user-message'}`}>
         <CardContent>
           <Typography variant='h5' component='h2' color='textSecondary'>
-            {message.username}: {message.text}
+            {!isUser && `${message.username || 'Unknown User'}: `}
+            {message.text}
           </Typography>
         </CardContent>
       </Card>

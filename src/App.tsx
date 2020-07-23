@@ -61,23 +61,27 @@ function App() {
   return (
     <div className='App'>
       <h1>Hi Bra!</h1>
-      <form className='app__form'>
-        {/* input field */}
-        <FormControl>
-          <InputLabel>Write a message...</InputLabel>
-          <Input value={input} onChange={(e) => setInput(e.target.value)} />
-          <IconButton className='app__button' type='submit' disabled={!input} color='primary' onClick={sendMsg}>
-            <SendIcon />
-          </IconButton>
-        </FormControl>
-        {/* button */}
-      </form>
       {/* messages themself */}
-      <FlipMove>
+      <FlipMove className='app__flipMove'>
         {messages.map((message) => (
           <Message key={message.id} username={username} message={message} />
         ))}
       </FlipMove>
+      <form className='app__form'>
+        {/* input field */}
+        <FormControl className='app_formControl'>
+          <Input
+            placeholder='Enter a message...'
+            className='app__input'
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          {/* button */}
+          <IconButton className='app__iconButton' type='submit' disabled={!input} color='primary' onClick={sendMsg}>
+            <SendIcon />
+          </IconButton>
+        </FormControl>
+      </form>
     </div>
   );
 }

@@ -5,12 +5,26 @@
 .app__form {
   background-color: rgb(240, 240, 240);
   position: fixed;
-  bottom: 0;
-  margin: 20px;
   padding: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  bottom: 0;
   width: 100%;
-  z-index: 1;
+  box-sizing: border-box;
+  border: 20px solid white;
+}
+
+.app_formControl {
+  /* Check Material-UI Theme */
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.app__input {
+  flex: 1;
+}
+.app__iconButton {
+  flex: 0;
+}
+
+.app__flipMove {
+  padding-bottom: 10%;
 }
