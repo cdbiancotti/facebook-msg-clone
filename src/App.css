@@ -28,3 +28,16 @@
 .app__flipMove {
   padding-bottom: 10%;
 }
+
+.app__logo {
+  margin-top: 20px;
+  width: 100px;
+  height: 100px;
+}
+
+h1 {
+  color: rgb(70, 70, 255);
+}
+.app__title-username {
+  color: brown;
+}

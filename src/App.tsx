@@ -60,28 +60,36 @@ function App() {
 
   return (
     <div className='App'>
-      <h1>Hi Bra!</h1>
-      {/* messages themself */}
-      <FlipMove className='app__flipMove'>
-        {messages.map((message) => (
-          <Message key={message.id} username={username} message={message} />
-        ))}
-      </FlipMove>
-      <form className='app__form'>
-        {/* input field */}
-        <FormControl className='app_formControl'>
-          <Input
-            placeholder='Enter a message...'
-            className='app__input'
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-          {/* button */}
-          <IconButton className='app__iconButton' type='submit' disabled={!input} color='primary' onClick={sendMsg}>
-            <SendIcon />
-          </IconButton>
-        </FormControl>
-      </form>
+      {username !== null && (
+        <>
+          <img className='app__logo' src='../public/chat-logo.svg' alt='ChatGroup Logo' title='Freepik' />
+          <h1>Welcome to ChatGroup</h1>
+          <h2>
+            We're happy to see you<span className='app__title-username'>{username && ` ${username}`}</span>!!
+          </h2>
+          {/* messages themself */}
+          <FlipMove className='app__flipMove'>
+            {messages.map((message) => (
+              <Message key={message.id} username={username} message={message} />
+            ))}
+          </FlipMove>
+          <form className='app__form'>
+            {/* input field */}
+            <FormControl className='app_formControl'>
+              <Input
+                placeholder='Enter a message...'
+                className='app__input'
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+              {/* button */}
+              <IconButton className='app__iconButton' type='submit' disabled={!input} color='primary' onClick={sendMsg}>
+                <SendIcon />
+              </IconButton>
+            </FormControl>
+          </form>
+        </>
+      )}
     </div>
   );
 }

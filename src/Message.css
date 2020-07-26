@@ -4,12 +4,19 @@
 }
 .message-card > div {
   padding: 10px !important;
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(220, 220, 220);
+}
+.message-card h2 {
+  color: rgb(50, 50, 50);
 }
 
 .user-message {
   margin-left: auto;
 }
 .user-message > div {
-  background-color: lightblue;
+  background-color: rgb(70, 70, 255);
+}
+
+.user-message h2 {
+  color: whitesmoke;
 }
